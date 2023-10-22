@@ -3,6 +3,8 @@ const path = require('path');
 const { default: mongoose } = require("mongoose")
 const app = express()
 const handlebars = require("express-handlebars")
+const {engine} = require("express-handlebars")
+
 const MongoStore = require("connect-mongo")
 const session = require("express-session")
 const FileStore = require("session-file-store")
@@ -15,11 +17,9 @@ const viewsRouter = require("./routes/views.router.js")
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.engine("handlebars", handlebars.engine)
-app.set("views", __dirname + "/views")
+app.engine("handlebars", engine())
 app.set("view engine", "handlebars")
-app.use(express.static(__dirname, + "/views"))
-app.use(express.static(path.join(__dirname, 'public')));
+app.set("views", path.resolve(__dirname + "/views"))
 
 app.use(session({
     store: MongoStore.create({

@@ -41,7 +41,7 @@ router.post("/login", async(req,res)=>{
             res.redirect("../../login")
         }
     }catch(error){
-        res.status(500).send("Error de registro")
+        res.redirect("../../login")
     }
 })
 

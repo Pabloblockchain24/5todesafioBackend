@@ -3,6 +3,8 @@ const router = express.Router()
 const User = require("../models/user.model.js")
 
 router.get("/login", async(req,res)=>{
+
+
     res.render("login.hbs",{
         title: "Vista login"
     })
@@ -15,6 +17,10 @@ router.get("/register", async(req,res)=>{
 })
 
 router.get("/profile", async(req,res)=>{
+    if(!req.session.email){
+        return res.redirect("login")
+    }
+
     res.render("profile.hbs",{
         title: "Vista profile",
         first_name: req.session.first_name,
