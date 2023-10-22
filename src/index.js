@@ -1,15 +1,15 @@
 const express = require("express")
 const path = require('path');
 const { default: mongoose } = require("mongoose")
-
 const app = express()
 const handlebars = require("express-handlebars")
 const MongoStore = require("connect-mongo")
 const session = require("express-session")
 const FileStore = require("session-file-store")
+const fileStorage = FileStore(session)
+
 const port = 8080;
 const sessionRouter = require("./routes/session.router.js")
-const fileStorage = FileStore(session)
 const viewsRouter = require("./routes/views.router.js")
 
 app.use(express.json())
