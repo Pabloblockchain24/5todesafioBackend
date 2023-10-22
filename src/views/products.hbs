@@ -1,0 +1,34 @@
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1> ¡ BIENVENIDO !</h1>
+        <p>EMAIL: {{email}}</p>
+        <p>ROL: {{rol}}</p>
+        <h2>LOGOUT</h2>
+        <a href="/api/sessions/logout">Logout</a>
+    </div>
+
+    <h1>PRODUCTOS</h1>
+    {{#each products}}
+    <div>
+        <p>Id:{{this._id}} </p>
+        <p>Nombre:{{this.nombre}} </p>
+        <p>Descripcion: {{this.descripcion}}</p>
+        <p>category: {{this.category}}</p>
+        <p>Precio: {{this.precio}}</p>
+        <p>Availability: {{this.availability}}</p>
+        <hr>
+    </div>
+    {{/each}}
+
+</body>
+
+</html>
